@@ -16,7 +16,7 @@ export class UserService {
     }
 
     create(user: User) {
-        return this.http.post('/api/users', user);
+        return this.http.post('https://js-course-instagram.herokuapp.com/api/registration', user);
     }
 
     update(user: User) {

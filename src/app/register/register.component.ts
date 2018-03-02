@@ -22,8 +22,10 @@ export class RegisterComponent {
         this.userService.create(this.model)
             .subscribe(
                 data => {
-                    this.alertService.success('Registration successful', true);
+                    this.alertService.success('Registration successful, token:'+data.token, true);
+                    console.log(data.token);
                     this.router.navigate(['/login']);
+
                 },
                 error => {
                     this.alertService.error(error);
