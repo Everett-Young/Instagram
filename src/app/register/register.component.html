@@ -1,29 +1,34 @@
 ﻿<div class="col-md-6 col-md-offset-3">
     <h2>Register</h2>
     <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="firstName">Name</label>
-            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.name" #firstName="ngModel" required />
-            <div *ngIf="f.submitted && !firstName.valid" class="help-block">Name is required</div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !Name.valid }">
+            <label for="Name">Name</label>
+            <input type="text" class="form-control" name="Name" [(ngModel)]="model.name" #Name="ngModel" required />
+            <div *ngIf="f.submitted && !Name.valid" class="help-block">Name is required</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="lastName">Nick Name</label>
-            <input type="text" class="form-control" name="lastName" [(ngModel)]="model.nick_name" #lastName="ngModel" required />
-            <div *ngIf="f.submitted && !lastName.valid" class="help-block">Nick Name is required</div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': (f.submitted && !nickName.valid) || !checkNick || (checkLen && checkNick) }">
+            <label for="nickName">Nick Name</label>
+            <input type="text" class="form-control" name="nickName" [(ngModel)]="model.nick_name" (ngModelChange)="onNickNameChange()" #nickName="ngModel" required />
+            <div *ngIf="f.submitted && !nickName.valid" class="help-block">Nick Name is required</div>
+            <div *ngIf="checkLen && checkNick" class="help-block">Nick name must have a minimum of 4 characters, and a maximum of 30 characters</div>
+            <div *ngIf="!checkNick" class="help-block">Nick name "{{model.nick_name}}" is already taken</div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="username">Email</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="model.email" #username="ngModel" required email/>
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Email is required</div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid || !checkEmail && !checkLenEm }">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="model.email"  #email="ngModel" required email (change)="onEmailCheck()" />
+            <div *ngIf="f.submitted && !email.valid || !checkEmail && !checkLenEm" class="help-block">Email is required or already taken</div>
         </div>
+
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" [(ngModel)]="model.pwd" #password="ngModel" required  />
             <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
         </div>
+
         <div class="form-group">
             <button [disabled]="loading" class="btn btn-primary">Register</button>
-            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
             <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
         </div>
     </form>

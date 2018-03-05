@@ -19,6 +19,14 @@ export class UserService {
         return this.http.post('https://js-course-instagram.herokuapp.com/api/registration', user);
     }
 
+    checkNickFree(nick_name: string){
+      return this.http.get('https://js-course-instagram.herokuapp.com/api/check/nick_name/'+nick_name);
+    }
+
+    checkEmailFree(email: string){
+      return this.http.get('https://js-course-instagram.herokuapp.com/api/check/email/'+email);
+    }
+
     update(user: User) {
         return this.http.put('/api/users/' + user.id, user);
     }
