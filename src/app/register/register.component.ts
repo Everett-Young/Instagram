@@ -60,7 +60,7 @@ export class RegisterComponent {
       }
 
       onEmailCheck() {
-        if ((this.model.email.length != 0){
+        if (this.model.email.length != 0){
           this.userService.checkEmailFree(this.model.email)
           .subscribe(
             data => {
@@ -76,8 +76,7 @@ export class RegisterComponent {
             error => {
                 this.alertService.error(error);
                 this.checkEmail = false;
-            }
-          );
+            });
         } else this.checkLenEm = true;
     }
 
