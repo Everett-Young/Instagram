@@ -42,10 +42,10 @@ export class RegisterComponent {
             .subscribe(
               data => {
                 if(data.free == true) {
-                  // console.log(data);
+                 //console.log(data);
                   this.checkNick = true;
                 }else {
-                  // console.log("false");
+                  //console.log("false");
                   this.checkNick = false;
                 }
 
@@ -65,10 +65,10 @@ export class RegisterComponent {
           .subscribe(
             data => {
               if(data.free == true) {
-                // console.log(data);
+                  //console.log(data);
                 this.checkEmail = true;
               }else {
-                // console.log("false");
+                //console.log("false");
                 this.checkEmail = false;
               }
 
