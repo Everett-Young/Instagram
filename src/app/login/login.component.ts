@@ -27,16 +27,16 @@ export class LoginComponent implements OnInit {
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
-    login() {
-        this.loading = true;
-        this.authenticationService.login(this.model)
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-    }
+    // login() {
+    //     this.loading = true;
+    //     this.authenticationService.login(this.model)
+    //         .subscribe(
+    //             data => {
+    //                 this.router.navigate([this.returnUrl]);
+    //             },
+    //             error => {
+    //                 this.alertService.error(error);
+    //                 this.loading = false;
+    //             });
+    // }
 }
