@@ -41,11 +41,11 @@ export class RegisterComponent {
             this.userService.checkNickFree(this.model.nick_name)
             .subscribe(
               data => {
-                if(data.free == true) {
-                 //console.log(data);
+                if (data['free'] === true) {
+                  // console.log(data);
                   this.checkNick = true;
-                }else {
-                  //console.log("false");
+                } else {
+                  // console.log("false");
                   this.checkNick = false;
                 }
 
@@ -56,19 +56,19 @@ export class RegisterComponent {
               }
             );
             this.checkLen = false;
-          } else this.checkLen = true;
+          } else { this.checkLen = true; }
       }
 
       onEmailCheck() {
-        if (this.model.email.length != 0){
+        if (this.model.email.length !== 0) {
           this.userService.checkEmailFree(this.model.email)
           .subscribe(
             data => {
-              if(data.free == true) {
-                  //console.log(data);
+              if (data['free'] === true) {
+                // console.log(data);
                 this.checkEmail = true;
-              }else {
-                //console.log("false");
+              } else {
+                // console.log("false");
                 this.checkEmail = false;
               }
 
@@ -77,7 +77,7 @@ export class RegisterComponent {
                 this.alertService.error(error);
                 this.checkEmail = false;
             });
-        } else this.checkLenEm = true;
+        } else { this.checkLenEm = true; }
     }
 
 
