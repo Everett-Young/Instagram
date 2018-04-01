@@ -41,7 +41,8 @@ export class RegisterComponent {
             this.userService.checkNickFree(this.model.nick_name)
             .subscribe(
               data => {
-                if(data.free == true) {
+                console.log(data);
+                if(data["free"] == true) {
                  //console.log(data);
                   this.checkNick = true;
                 }else {
@@ -64,7 +65,8 @@ export class RegisterComponent {
           this.userService.checkEmailFree(this.model.email)
           .subscribe(
             data => {
-              if(data.free == true) {
+              console.log(data);
+              if(data["free"] == true) {
                   //console.log(data);
                 this.checkEmail = true;
               }else {

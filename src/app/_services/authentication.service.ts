@@ -8,14 +8,13 @@ export class AuthenticationService {
     constructor(private http: HttpClient) { }
 
     login(modelUser) {
-      console.log(modelUser);
-        return this.http.post('https://js-course-instagram.herokuapp.com/api/authorization/', modelUser)
+        return this.http.post('https://js-course-instagram.herokuapp.com/api/authorization', modelUser)
             .map(user => {
-              console.log(user);
-                // if (user && user.token) {
-                //     localStorage.setItem('currentUser', JSON.stringify(user));
-                // }
-
+              let usertk = user["token"];
+              let usernm = user["user"];
+                if (usernm && usertk) {
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                }
                 return user;
             });
     }
