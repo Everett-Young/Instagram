@@ -1,19 +1,41 @@
-﻿<div class="col-md-6 col-md-offset-3">
-    <h2>Login</h2>
+<header>
+  <div class="wraper">
+﻿  <h2>Instagram</h2>
+  </div>
+﻿</header>
+<div class="wraper">
+
+<img class="autlogo" src="../assets/img/logo.png" alt="">
+<div id="login">
+  <div class="flip">
+<div class="form-login">
+  <h1>Авторизация</h1>
+  <fieldset>
+  <p class="login-msg"><alert></alert></p>
     <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
-            <div *ngIf="f.submitted && !email.valid" class="help-block">email is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !pwd.valid }">
-            <label for="pwd">Password</label>
-            <input type="password" class="form-control" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" required />
-            <div *ngIf="f.submitted && !pwd.valid" class="help-block">Password is required</div>
-        </div>
-        <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Login</button>
-            <a [routerLink]="['/register']" class="btn btn-link">Register</a>
-        </div>
+      <div class="form-group" [ngClass]="{ 'login-err': f.submitted && !email.valid }">
+        <input type="email" placeholder="Логин или Email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
+        <div *ngIf="f.submitted && !email.valid" class="login-err">Email is required</div>
+      </div>
+      <div class="form-group" [ngClass]="{ 'login-err': f.submitted && !pwd.valid }">
+        <input type="password"  placeholder="Пароль" class="form-control" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" required />
+        <div *ngIf="f.submitted && !pwd.valid" class="login-err">Password is required</div>
+      </div>
+      <div class="form-group">
+          <button [disabled]="loading" class="lgbt">ВОЙТИ</button>
+      </div>
     </form>
+      <p>Войти через: <span class="social fb">Facebook</span> <span class="social gp">Google +</span></p>
+      <p><a [routerLink]="['/register']" >Нет аккаунта? Регистрация.</a><br>
+      <a href="#">Забыли пароль?</a></p>
+  </fieldset>
 </div>
+</div>
+</div>
+</div>
+<footer>
+  <div class="wraper">
+  <p>Contact information: <a href="https://github.com/Everett-Young/Instagram" target="_top">
+  About</a>.</p>
+    </div>
+</footer>

@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-// fake backend
-import { fakeBackendProvider } from './_helpers/index';
 
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
@@ -41,9 +39,6 @@ import { RegisterComponent } from './register/index';
             useClass: JwtInterceptor,
             multi: true
         },
-
-
-        fakeBackendProvider
     ],
     bootstrap: [AppComponent]
 })
