@@ -18,6 +18,9 @@
  footer {
     padding: 25px;
     background: #222729 url(/assets/img/overlay.png);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
  header h2 {
