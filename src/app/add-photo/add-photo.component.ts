@@ -25,6 +25,7 @@ export class AddPhotoComponent implements OnInit {
          let target = event.target || event.srcElement;
          this.files = target.files;
      }
+
      submitRegister() {
          let final_data;
          if (this.files) {
@@ -34,20 +35,17 @@ export class AddPhotoComponent implements OnInit {
              for (let i = 0; i < files.length; i++) {
                  formData.append('image', files[i]);
              }
-             // formData.append('data', JSON.stringify(this.form));
-
+             formData.append('data', JSON.stringify(this.form));
              final_data = formData;
+             this.userService.addPhotos(final_data).subscribe(resp => {
+                  alert("Фото добавлено, и появится в Вашей ленте новостей");
+                  console.log(resp);
+              });
          } else {
-
-             final_data = this.form;
+             alert("Файл не выбран");
          }
-         console.log(final_data);
-        this.userService.addPhotos(final_data).map((response: Response) => response.json()).subscribe(resp => {
-             alert("Успешн");
-         })
-     }
 
+     };
   ngOnInit() {
   }
-
 }

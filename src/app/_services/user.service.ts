@@ -20,7 +20,7 @@ export class UserService {
     }
 
     addPhotos(form: FormData) {
-        return this.http.post('http://3e07af7f.ngrok.io/api/image/upload', form);
+        return this.http.post('https://js-course-instagram.herokuapp.com/api/image/upload', form);
     }
 
     checkNickFree(nick_name: string){
