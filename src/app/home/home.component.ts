@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
     constructor(private userService: UserService) {
         let juser = JSON.parse(localStorage.getItem('currentUser'));
         this.currentUser = juser.user;
-        console.log(this.currentUser );
+
     }
 
     ngOnInit() {
