@@ -16,7 +16,7 @@ export class UserService {
     }
 
     create(user: User) {
-        return this.http.post('http://3e07af7f.ngrok.io/api/registration', user);
+        return this.http.post('https://js-course-instagram.herokuapp.com/api/registration', user);
     }
 
     addPhotos(form: FormData) {
