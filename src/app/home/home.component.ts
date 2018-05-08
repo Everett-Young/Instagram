@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-
+import 'rxjs/add/operator/map';
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 
@@ -11,23 +11,19 @@ import { UserService } from '../_services/index';
 
 export class HomeComponent implements OnInit {
     currentUser: User;
-    users: User[] = [];
+    imageUsers = [];
 
-    constructor(private userService: UserService) {
-        let juser = JSON.parse(localStorage.getItem('currentUser'));
-        this.currentUser = juser.user;
-
-    }
+    constructor(private userService: UserService) {}
 
     ngOnInit() {
-        this.loadAllUsers();
+      let juser = JSON.parse(localStorage.getItem('currentUser'));
+      this.currentUser = juser.user;
+      this.userService.getUserImage().subscribe(listimg => {
+        for (let i = 900; i < 920; i++) {
+          this.imageUsers.push(listimg[i]);
+        }
+
+      });
     }
 
-    // deleteUser(id: number) {
-    //     this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    // }
-
-    private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
-    }
 }

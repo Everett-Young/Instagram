@@ -1,41 +1,57 @@
-<header>
-  <div class="wraper">
-﻿  <h2>Instagram</h2>
-  </div>
-﻿</header>
-<div class="wraper">
+<div class="login-container">
 
-<img class="autlogo" src="../assets/img/logo.png" alt="">
-<div id="login">
-  <div class="flip">
-<div class="form-login">
-  <h1>Авторизация</h1>
-  <fieldset>
-  <p class="login-msg"><alert></alert></p>
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-      <div class="form-group" [ngClass]="{ 'login-err': f.submitted && !email.valid }">
-        <input type="email" placeholder="Логин или Email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
-        <div *ngIf="f.submitted && !email.valid" class="login-err">Email is required</div>
-      </div>
-      <div class="form-group" [ngClass]="{ 'login-err': f.submitted && !pwd.valid }">
-        <input type="password"  placeholder="Пароль" class="form-control" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" required />
-        <div *ngIf="f.submitted && !pwd.valid" class="login-err">Password is required</div>
-      </div>
-      <div class="form-group">
-          <button [disabled]="loading" class="lgbt">ВОЙТИ</button>
-      </div>
-    </form>
-      <p>Войти через: <span class="social fb">Facebook</span> <span class="social gp">Google +</span></p>
-      <p><a [routerLink]="['/register']" >Нет аккаунта? Регистрация.</a><br>
-      <a href="#">Забыли пароль?</a></p>
-  </fieldset>
-</div>
-</div>
-</div>
-</div>
-<footer>
-  <div class="wraper">
-  <p>Contact information: <a href="https://github.com/Everett-Young/Instagram" target="_top">
-  About</a>.</p>
+  <div class="login-box animated fadeInDown">
+    <div class="login-logo"></div>
+    <div class="login-body">
+      <div class="login-title"><strong>Log In</strong> to your account</div>
+      <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" class="form-horizontal">
+        <div class="form-group">
+          <div class="col-md-12">
+            <input type="email" class="form-control" placeholder="E-mail" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
+            <div *ngIf="f.submitted && !email.valid" class="login-error">Email is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <input type="password" class="form-control" placeholder="Password" name="pwd" [(ngModel)]="model.pwd" #pwd="ngModel" required/>
+            <div *ngIf="f.submitted && !pwd.valid" class="login-error">Password is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-6">
+            <a href="#" class="btn btn-link btn-block">Forgot your password?</a>
+          </div>
+          <div class="col-md-6">
+            <button [disabled]="loading" class="btn btn-info btn-block">Log In</button>
+          </div>
+        </div>
+        <div class="login-or">OR</div>
+        <div class="form-group">
+          <div class="col-md-4">
+            <button class="btn btn-info btn-block btn-twitter"><span class="fa fa-twitter"></span> Twitter</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-info btn-block btn-facebook"><span class="fa fa-facebook"></span> Facebook</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-info btn-block btn-google"><span class="fa fa-google-plus"></span> Google</button>
+          </div>
+        </div>
+        <div class="login-subtitle">
+          Don't have an account yet? <a [routerLink]="['/register']">Create an account</a>
+        </div>
+      </form>
     </div>
-</footer>
+    <div class="login-footer">
+      <div class="pull-left">
+        &copy; 2018 Instagram project
+      </div>
+      <div class="pull-right">
+        <a href="https://github.com/Everett-Young/Instagram">About</a> |
+        <a href="https://github.com/Everett-Young/Instagram">Privacy</a> |
+        <a href="https://github.com/Everett-Young/Instagram">Contact Us</a>
+      </div>
+    </div>
+  </div>
+
+</div>

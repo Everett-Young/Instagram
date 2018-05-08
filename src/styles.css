@@ -2,25 +2,8 @@ body{
   margin: 0;
 }
 
-.alert.alert-success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    position: fixed;
-    top: 66px;
-    width: 90%;
-    text-align: center;
-    animation: nev 1s 1;
-    padding: 15px;
-    opacity: 0;
-    margin-bottom: 20px;
-    border: 1px solid #0000;
-    border-radius: 4px;
-}
 
-.wraper >alert > .alert-danger {
-  display: none;
-}
+
 
 
 /* You can add global styles to this file, and also import other style files */

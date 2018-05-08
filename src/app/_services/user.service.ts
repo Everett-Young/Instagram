@@ -23,6 +23,10 @@ export class UserService {
         return this.http.post('https://js-course-instagram.herokuapp.com/api/image/upload', form);
     }
 
+    addAva(form: FormData) {
+    return this.http.post('https://js-course-instagram.herokuapp.com/api/user/avatar', form);
+    }
+
     checkNickFree(nick_name: string){
       return this.http.get('https://js-course-instagram.herokuapp.com/api/check/nick_name/'+nick_name);
     }
@@ -31,11 +35,16 @@ export class UserService {
       return this.http.get('https://js-course-instagram.herokuapp.com/api/check/email/'+email);
     }
 
-    // update(user: User) {
-    //     return this.http.put('/api/users/' + user.id, user);
-    // }
-    //
-    // delete(id: number) {
-    //     return this.http.delete('/api/users/' + id);
-    // }
+    getUserImage() {
+      return this.http.get('https://picsum.photos/list')
+        .map(res => {
+          return res.map( res1 => {
+            return {
+              filename: 'https://picsum.photos/' + res1.filename,
+              author: res1.author,
+              dateAdd: '19/03/2018'
+            };
+          });
+    });
+    }
 }
